@@ -14,3 +14,9 @@
 Route::get('/', 'WelcomeController@show');
 
 Route::get('/home', 'HomeController@show');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('/plests', 'PlestsController');
+
+    Route::resource('/plests/{plest}/questions', 'PlestsQuestionsController');
+});

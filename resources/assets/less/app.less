@@ -3,4 +3,63 @@
 // @import "./spark/spark";
 @import "./../../../vendor/laravel/spark/resources/assets/less/spark";
 
+@import "variables";
 @import "elements/navbar";
+@import "components/my-games";
+@import "components/my-games/subnav";
+@import "components/welcome";
+@import "components/new-plest";
+@import "components/new-question";
+@import "components/question-nav";
+
+::selection {
+  background: @color-theme-2-secondary-2-0;
+}
+
+.with-navbar {
+  padding-top: 70px;
+}
+
+body {
+  background-color: white;
+}
+
+.btn-primary,
+.btn-play {
+  background-color: @color-theme-2-primary-0;
+  color: white;
+
+  &:hover {
+    background-color: @color-theme-2-primary-2;
+    color: white;
+  }
+}
+
+.btn-create {
+  background-color: @color-theme-2-secondary-2-0;
+  color: #111;
+
+  &:hover {
+    background-color: @color-theme-2-secondary-2-3;
+    color: #111;
+  }
+}
+
+.btn-favorite {
+  background-color: @color-theme-2-secondary-1-0;
+  color: white;
+
+  &:hover {
+    background-color: @color-theme-2-secondary-1-3;
+    color: white;
+  }
+}
+
+.glyphicon::after {
+  content: "";
+  margin-right: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}

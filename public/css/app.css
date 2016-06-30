@@ -7344,8 +7344,253 @@ body {
 [v-cloak] {
   display: none;
 }
-.navbar-inverse .btn-primary {
-  margin-top: 19px;
+.navbar-inverse {
+  background: #26CACA;
+  border: none;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
+.navbar-inverse .navbar-brand {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+}
+.navbar-inverse.guest {
+  background: #26CACA;
+}
+#main-links a {
+  color: white;
+}
+#my-games-dashboard {
+  padding-top: 30px;
+}
+#my-games-dashboard h1 {
+  color: #FFF500;
+  margin: 10px auto;
+  text-align: center;
+}
+#my-games-dashboard .thumbnail *::-moz-selection {
+  background: #FFF500;
+}
+#my-games-dashboard .thumbnail *::selection {
+  background: #FFF500;
+}
+#my-games-dashboard .plest-card .thumbnail {
+  background-color: white;
+  margin-top: 30px;
+}
+#my-games-dashboard .plest-card .thumbnail img {
+  height: 200px;
+  width: 100%;
+  background-size: 100% 100%;
+}
+#my-games-dashboard .plest-card .thumbnail .caption {
+  height: 120px;
+}
+#my-games-dashboard .plest-card .thumbnail .caption h3 {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4em;
+  margin-top: 5px;
+}
+#my-games-dashboard .plest-card .thumbnail .caption p {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative;
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em;
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;
+  /* place for '...' */
+  margin-right: -0.8em;
+  padding-right: 1em;
+}
+#my-games-dashboard .plest-card .thumbnail .caption p::after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
+}
+#my-games-dashboard .plest-card .thumbnail .caption p::before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+#my-games-dashboard .plest-card .thumbnail .option-buttons {
+  text-align: center;
+}
+#my-games-dashboard .plest-card .thumbnail .option-buttons .btn {
+  margin: 5px;
+}
+#my-games-dashboard .plest-card .thumbnail .option-buttons .btn .glyphicon::after {
+  margin-right: 0;
+}
+#my-games-dashboard .plest-card .thumbnail::-moz-selection {
+  background: #FFF500;
+}
+#my-games-dashboard .plest-card .thumbnail::selection {
+  background: #FFF500;
+}
+#my-games-dashboard .plest-search {
+  padding-top: 20px;
+}
+.subnav {
+  background: #E02AA4;
+  position: fixed;
+  width: 100%;
+  z-index: 1020;
+}
+.subnav .navbar {
+  height: 30px;
+  min-height: 30px;
+  background: none;
+  border: none;
+}
+.subnav .navbar-brand {
+  height: 30px;
+  color: #bbb;
+  font-weight: bold;
+}
+.subnav .navbar-nav {
+  line-height: 1.2em;
+}
+.subnav .navbar-nav > li {
+  padding: 0 10px;
+}
+.subnav .navbar-nav > li :first-child {
+  padding-left: 0px;
+}
+.subnav .navbar-nav > li > a {
+  height: 30px;
+  padding: 5px;
+  background-color: transparent;
+  color: #fff;
+  font-weight: bold;
+}
+.subnav .navbar-default .navbar-nav > .active > a,
+.subnav .navbar-default .navbar-nav > .active > a:hover,
+.subnav .navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  font-weight: bold;
+}
+.subnav .navbar-default .navbar-nav > li.active {
+  background: #fff;
+}
+.subnav .navbar-default .navbar-nav > li.active > a {
+  color: #E02AA4;
+  font-weight: 700;
+}
+.subnav .navbar-default .navbar-nav > li.active:hover {
+  background: #eee;
+}
+.subnav .navbar-default .navbar-nav > li.active:hover > a {
+  color: #EEFD2F;
+}
+.subnav .navbar-default .navbar-nav > li.active:focus > a {
+  color: #EEFD2F;
+}
+.welcome-header {
+  background-image: url(../img/welcome-header.svg);
+  background-size: 100%;
+  height: 720px;
+  padding-top: 50px;
+  background-color: #4CB1C3;
+}
+.welcome-header h1 {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+.welcome-header .standout-character {
+  color: #FFF500;
+  font-weight: bolder;
+}
+#new-plest h1 {
+  margin-bottom: 20px;
+}
+#new-plest h5 {
+  margin-bottom: 40px;
+}
+#new-plest form .row {
+  margin-top: 20px;
+}
+#new-plest form .row :first-child {
+  margin-top: 0;
+}
+#new-question form .btn {
+  margin-top: 20px;
+}
+.plest-questions-list {
+  margin-top: 20px;
+}
+::-moz-selection {
+  background: #EEFD2F;
+}
+::selection {
+  background: #EEFD2F;
+}
+.with-navbar {
+  padding-top: 70px;
+}
+body {
+  background-color: white;
+}
+.btn-primary,
+.btn-play {
+  background-color: #26CACA;
+  color: white;
+}
+.btn-primary:hover,
+.btn-play:hover {
+  background-color: #4AD6D6;
+  color: white;
+}
+.btn-create {
+  background-color: #EEFD2F;
+  color: #111;
+}
+.btn-create:hover {
+  background-color: #EAFD01;
+  color: #111;
+}
+.btn-favorite {
+  background-color: #E02AA4;
+  color: white;
+}
+.btn-favorite:hover {
+  background-color: #D90192;
+  color: white;
+}
+.glyphicon::after {
+  content: "";
+  margin-right: 5px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=app.css.map */

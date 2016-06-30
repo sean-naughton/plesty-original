@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Image;
+use Illuminate\Http\Request;
 use Laravel\Spark\User as SparkUser;
+use Storage;
 
 class User extends SparkUser
 {
@@ -12,7 +15,8 @@ class User extends SparkUser
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
     ];
 
@@ -47,4 +51,30 @@ class User extends SparkUser
         'trial_ends_at' => 'date',
         'uses_two_factor_auth' => 'boolean',
     ];
+
+    public function plests()
+    {
+        return $this->hasMany(Plest::class);
+    }
+
+    public function createPlest(Request $request)
+    {
+        $plest = new Plest($request->except('thumbnail'));
+
+        if ($request->hasFile('thumbnail')) {
+            $image = Image::createFromPlestThumbnail($request->file('thumbnail'));
+            $this->plests()->save($plest);
+            $plest->images()->save($image);
+        }
+
+        $plest->copyEngine();
+
+        $this->plests()->save($plest);
+
+        $question = Question::create();
+
+        $plest->add($question);
+
+        return $plest;
+    }
 }

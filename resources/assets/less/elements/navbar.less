@@ -1,3 +1,24 @@
-.navbar-inverse .btn-primary {
-  margin-top: 19px;
+.navbar-inverse {
+  background: @color-theme-2-primary-0;
+  border: none;
+
+  .navbar-nav > li > a {
+    color: white;
+  }
+
+  .navbar-brand {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+  }
+
+  &.guest {
+    background: @color-theme-2-primary-0;
+  }
+}
+
+#main-links {
+  a {
+    color: white;
+  }
 }
