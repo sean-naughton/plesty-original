@@ -2,17 +2,20 @@
 
 namespace App;
 
+use Auth;
 use Exception;
 use File;
 use Illuminate\Database\Eloquent\Model;
 
 class Plest extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
-    public function questions()
+    protected $appends = ['thumbnail', 'favorited'];
+
+    public function favorites()
     {
-        return $this->hasMany(Question::class);
+        return $this->morphMany(Favorite::class, 'favoritable');
     }
 
     public function images()
@@ -20,9 +23,21 @@ class Plest extends Model
         return $this->morphToMany(Image::class, 'imageable');
     }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     public function getThumbnailAttribute()
     {
         return $this->images()->first();
+    }
+
+    public function getFavoritedAttribute()
+    {
+        return $this->favorites()
+            ->where('user_id', Auth::id())
+            ->exists();
     }
 
     public function user()
@@ -40,10 +55,11 @@ class Plest extends Model
         return count($this->questions);
     }
 
-    public function copyEngine()
+    public function copyEngine($engineId)
     {
-        $source = storage_path('app/engines/prototype');
-        $dest = storage_path('app/public/games/' . $this->id);
+        $source = Engine::find($engineId)->folder;
+
+        $dest = storage_path('app/public/games/' . $this->id . '/');
 
         if (File::copyDirectory($source, $dest)) {
             $this->path = $dest;
@@ -56,5 +72,26 @@ class Plest extends Model
             $file = preg_replace('/{{title}}/i', $this->name, $file);
             File::put($this->path . '/data.js', $file);
         }
+    }
+
+    public function favorite()
+    {
+        $favorite = new Favorite(['user_id' => Auth::id()]);
+
+        $this->favorites()->save($favorite);
+    }
+
+    public function unfavorite()
+    {
+        $this->favorites()
+            ->where('user_id', Auth::id())
+            ->delete();
+    }
+
+    public function isFavorited()
+    {
+        return $this->favorites()
+                    ->where('user_id', Auth::id())
+                    ->exists();
     }
 }

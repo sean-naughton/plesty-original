@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path');
-            $table->string('full_size_path');
-            $table->string('storage_path');
-            
+            $table->integer('user_id')->unsigned();
+            $table->integer('favoritable_id')->unsigned();
+            $table->string('favoritable_type');
             $table->timestamps();
+
+            $table->unique(['user_id', 'favoritable_id', 'favoritable_type']);
         });
     }
 
@@ -29,6 +30,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('images');
+        Schema::drop('favorites');
     }
 }

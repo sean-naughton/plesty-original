@@ -28,7 +28,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function it_is_redirect_to_login_if_the_credentials_are_wrong()
+    public function it_is_redirected_to_login_if_the_credentials_are_wrong()
     {
         $user = factory(User::class)->create([
             'email' => 'ragnar@example.com',

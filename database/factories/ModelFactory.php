@@ -46,3 +46,10 @@ $factory->defineAs(App\Answer::class, 'withQuestion', function (Faker\Generator 
         'question_id' => factory(App\Question::class)->create()->id,
     ];
 });
+
+$factory->define(App\Engine::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'folder' => '/path/to/engine/folder',
+    ];
+});

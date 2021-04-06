@@ -15,6 +15,7 @@ class CreatePlestsTable extends Migration
         Schema::create('plests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->string('path')->nullable();
 
             $table->integer('user_id')->unsigned();

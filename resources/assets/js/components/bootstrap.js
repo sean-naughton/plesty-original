@@ -11,6 +11,10 @@
 
 require('./../spark-components/bootstrap');
 
-require('./home');
+require('./plest-gallery');
 require('./new-plest');
 require('./new-question');
+
+import PlestCard from './PlestCard.vue';
+
+Vue.component('plesty-plest-card', PlestCard);

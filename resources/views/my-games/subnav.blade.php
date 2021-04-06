@@ -16,7 +16,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">My Creations <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Favorites</a></li>
+                    <li><a href="/plests/favorites">Favorites</a></li>
                     <li><a href="#">Shared</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->

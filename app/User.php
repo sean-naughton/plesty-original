@@ -67,13 +67,11 @@ class User extends SparkUser
             $plest->images()->save($image);
         }
 
-        $plest->copyEngine();
-
         $this->plests()->save($plest);
 
-        $question = Question::create();
+        $plest->copyEngine($request->input('engine'));
 
-        $plest->add($question);
+        $this->plests()->save($plest);
 
         return $plest;
     }

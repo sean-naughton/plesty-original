@@ -17,9 +17,9 @@ class PlestsController extends Controller
      */
     public function index()
     {
-        $plests = Plest::all();
+        $plests = Plest::orderBy('created_at', 'ASC')->get();
 
-        return view('plests', ['plests' => $plests]);
+        return view('plests', compact('plests'));
     }
 
     /**
@@ -44,7 +44,7 @@ class PlestsController extends Controller
 
         $plest = $user->createPlest($request);
 
-        return redirect('/plests/' . $plest->id . '/questions/1/edit');
+        return redirect('/plests/' . $plest->id . '/questions/create');
     }
 
     /**
@@ -64,9 +64,13 @@ class PlestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plest $plest)
     {
-        //
+        if(count($plest->questions) > 0) {
+            return redirect('/questions/' . $plest->questions->last()->id . '/edit');
+        }
+
+        return redirect("/plests/$plest->id/questions/create");
     }
 
     /**
@@ -90,5 +94,14 @@ class PlestsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function favorites()
+    {
+        $plests = Plest::whereHas('favorites', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->get();
+
+        return view('plests.favorites', compact('plests'));
     }
 }

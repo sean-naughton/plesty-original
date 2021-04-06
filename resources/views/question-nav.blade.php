@@ -4,7 +4,7 @@
             <h3 class="panel-title">Questions</h3>
         </div>
         <div class="panel-body">
-            @if($plest->countQuestions > 1)
+            @if($plest->countQuestions > 0)
                 <ol>
                 @foreach($plest->questions as $question)
                         <li><a href="/questions/{{$question->id}}/edit">{{ $question->title }}</a></li>

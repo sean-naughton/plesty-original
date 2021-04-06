@@ -7,6 +7,7 @@
     <new-question :plest="plest" inline-template id="new-question">
         <div class="col-md-9">
             <h3>Plest: {{ $plest->name }}</h3>
+
             <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="/plests/{{ $plest->id }}/questions">
                 {{ csrf_field() }}
                 <div class="row">
@@ -14,6 +15,23 @@
                         <h4>Question {{ $plest->countQuestions + 1 }}</h4>
                         <input type="text" name="title" class="form-control input-lg" placeholder="Ask your question here">
                     </div>
+                </div>
+
+                <div class="row text-center" v-show="!image5">
+                    <label class="btn btn-default btn-file text-center">
+                        Thumbnail
+                        <input type="file"
+                               name="question-image"
+                               plest-question-image-id="5"
+                               style="display: none;"
+                        @change="onFileChange"
+                        >
+                    </label>
+                </div>
+                <div class="row text-center" v-show="image5">
+                    <img :src="image5" height="100"/>
+                    <br /><br />
+                    <button @click="removeImage">Remove Thumbnail</button>
                 </div>
 
                 <div class="row">

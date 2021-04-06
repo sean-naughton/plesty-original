@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Image;
 use App\Plest;
 use App\Question;
 use Auth;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use Storage;
 
 class PlestsQuestionsController extends Controller
 {
@@ -48,11 +50,17 @@ class PlestsQuestionsController extends Controller
     public function store(Plest $plest, Request $request)
     {
         $question = new Question(['title' => $request->input('title')]);
+        if ($request->hasFile("question-image")) {
+            Image::createFromQuestionThumbnail($request->file("question-image"), $plest);
+        }
 
         $plest->add($question);
 
         foreach ($request->input('answers') as $index => $answer) {
             $question->add(new Answer(['text' => $answer]));
+            if ($request->hasFile("answers-images.$index")) {
+                Image::createFromAnswerThumbnail($request->file("answers-images.$index"), $plest, $index+1);
+            }
         }
 
         if ( ! File::exists($plest->path)) {

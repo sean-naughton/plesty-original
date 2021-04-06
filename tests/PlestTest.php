@@ -12,9 +12,12 @@ class PlestTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_has_a_name()
+    public function it_has_a_name_and_description()
     {
-        $plest = new Plest(['name' => 'Vikings']);
+        $plest = new Plest([
+            'name' => 'Vikings',
+            'description' => 'In Valhalla, only one god can reign supreme. Find out in the great Plest, Vikings.'
+        ]);
 
         $this->assertEquals('Vikings', $plest->name);
     }
@@ -52,13 +55,22 @@ class PlestTest extends TestCase
         
     }
 
-    public function a_plest_has_a_creator()
+    /** @test */
+    public function it_can_be_favorited_by_an_authenticated_user()
     {
-        $this->assertTrue(true);
-    }
+        $user = factory(User::class)->create();
+        $plest = factory(Plest::class)->create();
 
-    public function it_copies_the_engine_directory()
-    {
-        
+        $this->actingAs($user);
+
+        $plest->favorite();
+
+        $this->seeInDatabase('favorites', [
+            'user_id' => $user->id,
+            'favoritable_id' => $plest->id,
+            'favoritable_type' => get_class($plest),
+        ]);
+
+        $this->assertTrue($plest->isFavorited());
     }
 }

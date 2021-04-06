@@ -32,6 +32,8 @@ class Question extends Model
         }
 
         $this->answers()->save($answer);
+        
+        return $answer;
     }
 
     public function countAnswers()

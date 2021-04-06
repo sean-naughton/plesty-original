@@ -30,6 +30,8 @@ class HomeController extends Controller
 
         $user->load('plests');
 
-        return view('plests', ['user' => $user]);
+        $plests = collect($user->plests);
+
+        return view('home', compact('user', 'plests'));
     }
 }
