@@ -6,7 +6,6 @@ Homestead.json
 .env
 .idea
 .vagrant
-composer.json
 .DS_Store
 
 _ide_helper.php
