@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
-    image: seannaughton/plesty
+    image: seannaughton/plesty-original
     container_name: app
     restart: unless-stopped
     tty: true
