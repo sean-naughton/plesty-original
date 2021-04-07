@@ -16,7 +16,7 @@ class MyPlestsPageTest extends TestCase
 
         $this->actingAs($user);
 
-        dd($this->visit('/home'));
-//            ->assertCountElements('.plest-card', 10);
+        $this->visit('/home')
+            ->assertCountElements('.plest-card', 10);
     }
 }
