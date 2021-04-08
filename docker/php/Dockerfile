@@ -41,6 +41,8 @@ RUN chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 
-# Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
+# Expose port 9000
 EXPOSE 9000
-CMD ["php-fpm"]
+
+# start php-fpm server (for FastCGI Process Manager) - Now in docker-compose.yml command
+# CMD ["php-fpm"]
