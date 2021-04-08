@@ -41,6 +41,10 @@ RUN chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 
+# Add user for laravel application
+RUN groupadd -g 1000 www-data
+RUN useradd -u 1000 -ms /bin/bash -g www-data www-data
+
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
 CMD ["php-fpm"]
