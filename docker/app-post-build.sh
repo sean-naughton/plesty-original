@@ -1,10 +1,13 @@
 #!/bin/bash
 
+ln -s /var/www/html/storage/app/public/ /var/www/html/public/storage
+
 chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 
 cp -R /var/www/html/engines /var/www/html/storage/app
+
 
 composer install
 
