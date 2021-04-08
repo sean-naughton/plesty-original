@@ -36,6 +36,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy existing application directory contents to the working directory
 COPY . /var/www/html
 
+RUN composer install
+RUN php artisan migrate
+
 # Assign permissions of the working directory to the www-data user
 RUN chown -R www-data:www-data \
         /var/www/html/storage \
