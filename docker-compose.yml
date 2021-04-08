@@ -22,6 +22,7 @@ services:
      - app-network
     depends_on:
       - db
+    command: bash -c "./docker/app-post-build.sh"
 
   #Nginx Service
   webserver:
