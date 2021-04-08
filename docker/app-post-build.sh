@@ -4,6 +4,8 @@ chown -R www-data:www-data \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache
 
+cp -R /var/www/html/engines /var/www/html/storage/app
+
 composer install
 
 echo "Waiting for mysql..."
