@@ -21,7 +21,6 @@ services:
     networks:
      - app-network
     depends_on:
-      - webserver
       - db
 
   #Nginx Service
@@ -38,6 +37,8 @@ services:
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
+    depends_on:
+      - app
 
   #MySQL Service
   db:
