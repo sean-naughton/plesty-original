@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -s /var/www/html/storage/app/public/ /var/www/html/public/storage
+ln -s /var/www/html/storage/app/public /var/www/html/public/storage
 
 chown -R www-data:www-data \
         /var/www/html/storage \
