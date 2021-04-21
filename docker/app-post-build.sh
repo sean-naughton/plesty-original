@@ -17,7 +17,7 @@ while ! mysqladmin ping -hdb -pplestydbpassword --silent; do
 done
 echo "MySQL started"
 
-php artisan migrate
+php artisan migrate --force
 
 php-fpm
 
